@@ -1,0 +1,42 @@
+﻿@model IEnumerable<CRUD_MVC.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Read</h1>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+    <div class="form-group">
+        <input type="button" value="Novo" class="btn btn-primary" onclick="location.href='@Url.Action( "Create","Produtos")'; return false;" />
+    </div>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                <div class="form-group">
+                    <input type="button" value="Editar" class="btn btn-warning" onclick="location.href='@Url.Action( "Edit","Produtos", new { id = @item.Id })'; return false;" />
+                    <input type="button" value="Excluir" class="btn btn-danger" onclick="location.href='@Url.Action( "Delete","Produtos", new { id = @item.Id })'; return false;" />
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+﻿@model CRUD_MVC.Models.Produto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Deseja excluir esse registro?</h3>
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Excluir" class="btn btn-danger" />
+        @*<a asp-action="Index">Back to List</a>*@
+        <input type="button" value="Voltar" class="btn btn-outline-secondary" onclick="location.href='@Url.Action( "Index","Produtos")'; return false;" />
+    </form>
+</div>
